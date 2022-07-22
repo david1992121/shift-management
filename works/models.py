@@ -8,8 +8,10 @@ SHIFT_CHOICES = (
     (2, '16-24'),
 )
 
+
 class Shift(models.Model):
     hour = models.IntegerField(choices=SHIFT_CHOICES, default=0)
     date = models.DateField()
-    user = models.ForeignKey(Account, related_name='shifts', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        Account, related_name='shifts', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

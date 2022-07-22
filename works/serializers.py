@@ -1,10 +1,11 @@
 from attr import validate
 from rest_framework import serializers
-from .models import Shift
+from .models import Shift, SHIFT_CHOICES
 
 
 class ShiftSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField(write_only=True)
+    hour = serializers.ChoiceField(choices=SHIFT_CHOICES)
 
     class Meta:
         fields = '__all__'
