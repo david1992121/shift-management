@@ -12,7 +12,9 @@ class BaseTest(TestCase):
         self.password = 'password'
         self.hour = 0
         self.date = datetime.today().strftime('%Y-%m-%d')
-        self.date2 = (datetime.today() + timedelta(days = 1)).strftime('%Y-%m-%d')
+        self.date2 = (
+            datetime.today() + timedelta(days=1)
+        ).strftime('%Y-%m-%d')
 
         # set user
         self.user = Account.objects.create(username=self.username)
