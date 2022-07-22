@@ -7,6 +7,12 @@ from rest_framework.authtoken.models import Token
 
 
 class Account(AbstractBaseUser):
+    """
+    A model for users
+
+    It simply has the three fields `username`, `password`, `last_login`.
+    In addition, it has several shifts.
+    """
     username = models.CharField(max_length=50, unique=True)
 
     USERNAME_FIELD = 'username'

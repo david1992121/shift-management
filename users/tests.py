@@ -2,18 +2,27 @@ from django.test import TestCase
 from django.urls import reverse
 from users.models import Account
 import json
+from datetime import datetime, timedelta
 
 
-class AccountTest(TestCase):
-    def set_values(self):
+class BaseTest(TestCase):
+    def setUp(self):
+        # set common values
         self.username = 'user'
         self.password = 'password'
+        self.hour = 0
+        self.date = datetime.today().strftime('%Y-%m-%d')
+        self.date2 = (datetime.today() + timedelta(days = 1)).strftime('%Y-%m-%d')
 
-    def setUp(self):
-        self.set_values()
+        # set user
         self.user = Account.objects.create(username=self.username)
         self.user.set_password(self.password)
         self.user.save()
+
+
+class AccountTest(BaseTest):
+    def setUp(self):
+        super().setUp()
 
 
 class AccountModelTest(AccountTest):

@@ -10,6 +10,10 @@ SHIFT_CHOICES = (
 
 
 class Shift(models.Model):
+    """
+    A model representing work shifts
+    It has the `hour`, `date`, `user` fields.
+    """
     hour = models.IntegerField(choices=SHIFT_CHOICES, default=0)
     date = models.DateField()
     user = models.ForeignKey(
